@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:spacegame/Pages/ItemPage.dart';
 
-import '../Game/SpaceGame.dart';
-import 'GamePage.dart';
+import 'package:towergame/Pages/ItemPage.dart';
+import 'package:towergame/Game/TowerGame.dart';
+import 'package:towergame/Pages/GamePage.dart';
 
 class BottomTabbarMain extends StatefulWidget {
-  final SpaceGame game;
+  final TowerGame game;
 
   const BottomTabbarMain({
     Key key,
@@ -18,7 +18,7 @@ class BottomTabbarMain extends StatefulWidget {
 
 class _BottomTabbarMainState extends State<BottomTabbarMain>
     with SingleTickerProviderStateMixin {
-  final SpaceGame _game;
+  final TowerGame _game;
   TabController _tabController;
 
   _BottomTabbarMainState(this._game) {

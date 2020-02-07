@@ -12,8 +12,8 @@
 // import 'package:flame/components/component.dart';
 // import 'package:flame/components/animation_component.dart';
 
-// import 'package:spacegame/Game/Grids/GridPosition.dart';
-// import 'package:spacegame/Game/Grids/GridSize.dart';
+// import 'package:towergame/Game/Grids/GridPosition.dart';
+// import 'package:towergame/Game/Grids/GridSize.dart';
 // import 'Building.dart';
 // import 'BuildingType.dart';
 // import '../../Mixins/HasGameRef.dart';

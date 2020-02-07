@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../Game/SpaceGame.dart';
-import '../Game/TopBar/Widgets.dart';
+import 'package:towergame/Game/TowerGame.dart';
+import 'package:towergame/Game/TopBar/Widgets.dart';
 
 class GamePage extends StatelessWidget {
-  final SpaceGame game;
+  final TowerGame game;
 
   GamePage({Key key, this.game}) : super(key: key);
 

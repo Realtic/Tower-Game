@@ -1,5 +1,5 @@
-import '../SpaceGame.dart';
+import 'package:towergame/Game/TowerGame.dart';
 
 mixin HasGameRef {
-  SpaceGame gameRef;
+  TowerGame gameRef;
 }

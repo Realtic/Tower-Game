@@ -4,8 +4,8 @@ import 'package:flame/components/component.dart';
 import 'package:flame/components/mixins/resizable.dart';
 import 'package:flame/sprite.dart';
 
-import '../../Mixins/HasGameRef.dart';
-import 'Backgrounds.dart';
+import 'package:towergame/Game/Mixins/HasGameRef.dart';
+import 'package:towergame/Game/Components/Backgrounds/Backgrounds.dart';
 
 class Background extends Component with HasGameRef, Resizable {
   Sprite bgSprite;

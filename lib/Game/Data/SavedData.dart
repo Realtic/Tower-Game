@@ -2,10 +2,10 @@ import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'DataObj.dart';
+import 'package:towergame/Game/Data/DataObj.dart';
 
 class SavedData {
-  static const SAVE_NAME = 'spacegame.data';
+  static const SAVE_NAME = 'towergame.data';
 
   static Future save(Object data) async {
     String dataString = json.encode(data);

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flushbar/flushbar.dart';
 
-import '../Item.dart';
-import '../ItemStore.dart';
+import 'package:towergame/Pages/Item/Item.dart';
+import 'package:towergame/Pages/Item/ItemStore.dart';
 
 class ItemPage extends StatelessWidget {
   final ItemType itemType;

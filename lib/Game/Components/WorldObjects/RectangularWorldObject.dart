@@ -4,8 +4,8 @@ import 'package:box2d_flame/box2d.dart';
 import 'package:flame/components/mixins/resizable.dart';
 import 'package:flame/sprite.dart';
 
-import '../../Mixins/HasGameRef.dart';
-import '../WorldObjects/WorldObject.dart';
+import 'package:towergame/Game/Mixins/HasGameRef.dart';
+import 'package:towergame/Game/Components/WorldObjects/WorldObject.dart';
 
 class RectangularWorldObject extends WorldObject with HasGameRef, Resizable {
   RectangularWorldObject(Size size, Vector2 position, String path)

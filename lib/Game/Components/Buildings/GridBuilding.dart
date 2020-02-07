@@ -1,14 +1,13 @@
 import 'dart:ui';
 
 import 'package:box2d_flame/box2d.dart';
-import 'package:spacegame/Game/Components/Buildings/MainBaseBuilding.dart';
 
-import 'Building.dart';
-import '../../Mixins/HasGameRef.dart';
-import '../../Data/GridData.dart';
-import '../Structures/HollowRectangleStructure.dart';
-import '../Structures/SolidRectangleStructure.dart';
-import '../../Grids/GridItem.dart';
+import 'package:towergame/Game/Components/Buildings/Building.dart';
+import 'package:towergame/Game/Mixins/HasGameRef.dart';
+import 'package:towergame/Game/Data/GridData.dart';
+import 'package:towergame/Game/Components/Structures/HollowRectangleStructure.dart';
+import 'package:towergame/Game/Components/Structures/SolidRectangleStructure.dart';
+import 'package:towergame/Game/Grids/GridItem.dart';
 
 // this is temporary somewhat
 // like a controller class/obj for the structures

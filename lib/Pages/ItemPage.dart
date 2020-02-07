@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:simple_gesture_detector/simple_gesture_detector.dart';
 
-import 'Item/ItemPages/ItemPage.dart' as ViewableItemPage;
-import 'Item/ItemStore.dart';
+import 'package:towergame/Pages/Item/ItemPages/ItemPage.dart'
+    as ViewableItemPage;
+import 'package:towergame/Pages/Item/ItemStore.dart';
 
 class ItemPage extends StatelessWidget {
   const ItemPage({Key key}) : super(key: key);

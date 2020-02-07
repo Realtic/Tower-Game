@@ -1,8 +1,8 @@
 import 'package:uuid/uuid.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'OptionsData.dart';
-import 'GridData.dart';
+import 'package:towergame/Game/Data/OptionsData.dart';
+import 'package:towergame/Game/Data/GridData.dart';
 
 part 'DataObj.g.dart';
 

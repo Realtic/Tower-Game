@@ -1,8 +1,8 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
-import 'package:spacegame/Pages/BottomTabbarMain.dart';
 
-import 'Game/SpaceGame.dart';
+import 'package:towergame/Pages/BottomTabbarMain.dart';
+import 'package:towergame/Game/TowerGame.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,7 +14,7 @@ void main() {
 }
 
 class Game {
-  static SpaceGame game = SpaceGame();
+  static TowerGame game = TowerGame();
 }
 
 class MyApp extends StatelessWidget {

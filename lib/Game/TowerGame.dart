@@ -3,28 +3,22 @@ import 'dart:ui';
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 import 'package:flame/util.dart';
-import 'package:flame/sprite.dart';
 import 'package:flame/position.dart';
 import 'package:flame/components/component.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/gestures.dart';
 import 'package:wakelock/wakelock.dart';
 
-import 'package:spacegame/Game/Components/Structures/HollowRectangleStructure.dart';
-import 'package:spacegame/Game/Components/Buildings/MainBaseBuilding.dart';
-import 'Mixins/HasGameRef.dart';
-import 'Data/SavedData.dart';
-import 'Data/DataObj.dart';
-import 'Components/Backgrounds/Backgrounds.dart';
-import 'Components/Backgrounds/Background.dart';
-import 'Gestures/Tappable.dart';
-import 'Data/GridData.dart';
-import 'Components/Buildings/GridBuilding.dart';
-import 'Components/Structures/AnimatedStructure.dart';
+import 'package:towergame/Game/Mixins/HasGameRef.dart';
+import 'package:towergame/Game/Data/SavedData.dart';
+import 'package:towergame/Game/Data/DataObj.dart';
+import 'package:towergame/Game/Gestures/Tappable.dart';
+import 'package:towergame/Game/Data/GridData.dart';
+import 'package:towergame/Game/Components/Buildings/GridBuilding.dart';
 
 enum GameState { TUTORIAL, PAUSED, RUNNING, AD }
 
-class SpaceGame extends BaseGame {
+class TowerGame extends BaseGame {
   GameState state;
   Object rawData;
   DataObj data;
@@ -42,7 +36,7 @@ class SpaceGame extends BaseGame {
   Size screenSize;
   double tileSize;
 
-  SpaceGame() {
+  TowerGame() {
     _initialize();
   }
 

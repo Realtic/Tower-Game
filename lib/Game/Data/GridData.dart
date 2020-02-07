@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:json_annotation/json_annotation.dart';
 
-import '../Components/Buildings/BuildingType.dart';
-import '../Grids/GridItem.dart';
+import 'package:towergame/Game/Components/Buildings/BuildingType.dart';
+import 'package:towergame/Game/Grids/GridItem.dart';
 
 part 'GridData.g.dart';
 
@@ -31,7 +31,17 @@ class GridData {
       [null, null, null, null, null, null, null, null, null],
       [null, null, null, null, null, null, null, null, null],
       [null, null, null, null, null, null, null, null, null],
-      [null, null, null, null, null, null, null, null, null],
+      [
+        GridItem(0, 3, buildingType: BuildingType.MAIN1, isTappable: true),
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
       [null, null, null, null, null, null, null, null, null],
       [null, null, null, null, null, null, null, null, null],
       [null, null, null, null, null, null, null, null, null],

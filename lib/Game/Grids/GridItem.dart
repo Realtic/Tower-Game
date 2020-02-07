@@ -3,13 +3,10 @@ import 'dart:ui';
 import 'package:flame/components/mixins/resizable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flame/components/component.dart';
-import 'package:spacegame/Game/Components/Buildings/MainBaseBuilding.dart';
-import 'package:spacegame/Game/Grids/GridPosition.dart';
-import 'package:spacegame/Game/Grids/GridSize.dart';
 
-import '../../Game/Mixins/HasGameRef.dart';
-import '../Components/Buildings/BuildingType.dart';
-import '../Gestures/Tappable.dart';
+import 'package:towergame/Game/Mixins/HasGameRef.dart';
+import 'package:towergame/Game/Components/Buildings/BuildingType.dart';
+import 'package:towergame/Game/Gestures/Tappable.dart';
 
 part 'GridItem.g.dart';
 

@@ -1,4 +1,4 @@
-import 'Item.dart';
+import 'package:towergame/Pages/Item/Item.dart';
 
 enum ItemType {
   TYPE_ONE,
