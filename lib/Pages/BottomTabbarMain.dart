@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:towergame/Pages/ItemPage.dart';
 import 'package:towergame/Game/TowerGame.dart';
+import 'package:towergame/Pages/ItemPage.dart';
 import 'package:towergame/Pages/GamePage.dart';
+import 'package:towergame/Pages/GamePage2.dart';
 
 class BottomTabbarMain extends StatefulWidget {
   final TowerGame game;
@@ -65,7 +66,7 @@ class _BottomTabbarMainState extends State<BottomTabbarMain>
             Container(
               alignment: Alignment.center,
               color: Colors.grey,
-              child: Text("Map"),
+              child: GamePage2(),
             ),
           ],
         ),
@@ -119,7 +120,7 @@ class _BottomTabbarMainState extends State<BottomTabbarMain>
         Icons.map,
         size: 22,
       ),
-      text: 'Map',
+      text: 'Game2',
     ),
     Tab(
       icon: Icon(
