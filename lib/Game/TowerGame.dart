@@ -52,6 +52,7 @@ class TowerGame extends BaseGame {
       // backgrounds
       'bgs/space_tall.png',
       'bgs/plain_tall.png',
+      'bgs/grassy_bg.png',
       // interface items
       'interfaces/interface_bar.png',
       'interfaces/alliance.png',

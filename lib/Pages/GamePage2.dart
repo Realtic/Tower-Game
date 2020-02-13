@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:towergame/Game/TowerGame.dart';
 import 'package:towergame/Game/TopBar/Widgets.dart';
+import 'package:towergame/Game/Components/Buildings/BuildingFloor.dart';
+import 'package:towergame/Game/Components/Buildings/BuildingFloors.dart';
+import 'package:towergame/Game/Components/Buildings/BuildingFloorWidget.dart';
 
 class GamePage2 extends StatelessWidget {
   final TowerGame game;
+  final List<BuildingFloor> buildingFloors = [];
 
   GamePage2({Key key, this.game}) : super(key: key);
 
@@ -12,8 +16,55 @@ class GamePage2 extends StatelessWidget {
     return TopBarWidgets.build(index, tileSize, context);
   }
 
-  Widget _buildPageView() {
-    return game.widget;
+  Widget _buildGameView(BuildContext context, double tileSize) {
+    buildingFloors.addAll([
+      // BuildingFloor(Size(tileSize * 5, tileSize), bg: BuildingFloors.PLAIN),
+      BuildingFloor(Size(tileSize * 5, tileSize)),
+      BuildingFloor(Size(tileSize * 5, tileSize)),
+      BuildingFloor(Size(tileSize * 5, tileSize)),
+      BuildingFloor(Size(tileSize * 5, tileSize)),
+      BuildingFloor(Size(tileSize * 5, tileSize)),
+      BuildingFloor(Size(tileSize * 5, tileSize)),
+      BuildingFloor(Size(tileSize * 5, tileSize)),
+      BuildingFloor(Size(tileSize * 5, tileSize)),
+      BuildingFloor(Size(tileSize * 5, tileSize)),
+      BuildingFloor(Size(tileSize * 5, tileSize)),
+      BuildingFloor(Size(tileSize * 5, tileSize)),
+      BuildingFloor(Size(tileSize * 5, tileSize)),
+    ]);
+
+    // get gridData
+
+    return ListView.builder(
+      itemCount: buildingFloors.length,
+      itemBuilder: (BuildContext context, int index) {
+        BuildingFloor floor = buildingFloors[index];
+        return Align(
+          alignment: Alignment.center,
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(tileSize, 0.0, tileSize, 0.0),
+            // child: BuildingFloorWidget(floor, index, context),
+            child: Card(
+              child: Container(
+                width: tileSize * 7,
+                height: tileSize * 1.75,
+                child: BuildingFloorWidget(floor, index, tileSize, context),
+              ),
+              margin: EdgeInsets.zero,
+            ),
+            // ListTile(
+            //   // title: Positioned.fill(
+            //   //   child: BuildingFloorWidget(floor, index, tileSize, context),
+            //   // ),
+            //   title: BuildingFloorWidget(floor, index, tileSize, context),
+            //   leading: null,
+            //   subtitle: null,
+            // ),
+          ),
+        );
+      },
+      reverse: true,
+    );
   }
 
   @override
@@ -26,7 +77,7 @@ class GamePage2 extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/images/bgs/space_tall.png"),
+              image: AssetImage("assets/images/bgs/grassy_bg.png"),
               fit: BoxFit.cover,
             ),
           ),
@@ -63,13 +114,14 @@ class GamePage2 extends StatelessWidget {
           ),
           body: Stack(
             fit: StackFit.expand,
-            children: [
+            children: <Widget>[
               Positioned.fill(
-                child: GestureDetector(
-                  behavior: HitTestBehavior.opaque,
-                  onTapDown: game.onTapDown,
-                  child: _buildPageView(),
-                ),
+                child: _buildGameView(context, tileSize),
+                // child: GestureDetector(
+                //   behavior: HitTestBehavior.opaque,
+                //   onTapDown: game.onTapDown,
+                //   child: _buildGameView(context, tileSize),
+                // ),
               ),
             ],
           ),
