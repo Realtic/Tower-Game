@@ -9,7 +9,9 @@ String bgEnumToString(Backgrounds bg) {
     return 'bgs/plain_tall.png';
   } else if (index == 1) {
     return 'bgs/space_tall.png';
+  } else if (index == 2) {
+    return 'bgs/grassy_bg.png';
   } else {
-    return 'bgs/plain_tall.png';
+    return 'bgs/grassy_bg.png';
   }
 }
