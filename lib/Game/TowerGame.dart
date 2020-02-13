@@ -71,7 +71,12 @@ class TowerGame extends BaseGame {
       'structures/structure_vertical_rectangle_shell.png',
       // buildings
       'buildings/someroom_bg_one.png',
-      'buildings/someroom_bg_anim.png',
+      'buildings/someroom_bg_anim_one.png',
+      'buildings/someroom_bg_anim_two.png',
+      'buildings/someroom_bg_anim_three.png',
+      'buildings/someroom_bg_anim_four.png',
+      'buildings/under_construction.png',
+      'buildings/tmp_spacer_room.png',
     ]);
 
     // load the raw saved data

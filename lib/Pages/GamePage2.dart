@@ -13,24 +13,31 @@ class GamePage2 extends StatelessWidget {
   GamePage2({Key key, this.game}) : super(key: key);
 
   Widget _buildTopBarWidget(int index, double tileSize, BuildContext context) {
-    return TopBarWidgets.build(index, tileSize, context);
+    Color topBarBgColor = Color.fromARGB(255, 150, 150, 150);
+    return TopBarWidgets.build(index, tileSize, topBarBgColor, context);
   }
 
   Widget _buildGameView(BuildContext context, double tileSize) {
+    buildingFloors.clear();
     buildingFloors.addAll([
-      // BuildingFloor(Size(tileSize * 5, tileSize), bg: BuildingFloors.PLAIN),
-      BuildingFloor(Size(tileSize * 5, tileSize)),
-      BuildingFloor(Size(tileSize * 5, tileSize)),
-      BuildingFloor(Size(tileSize * 5, tileSize)),
-      BuildingFloor(Size(tileSize * 5, tileSize)),
-      BuildingFloor(Size(tileSize * 5, tileSize)),
-      BuildingFloor(Size(tileSize * 5, tileSize)),
-      BuildingFloor(Size(tileSize * 5, tileSize)),
-      BuildingFloor(Size(tileSize * 5, tileSize)),
-      BuildingFloor(Size(tileSize * 5, tileSize)),
-      BuildingFloor(Size(tileSize * 5, tileSize)),
-      BuildingFloor(Size(tileSize * 5, tileSize)),
-      BuildingFloor(Size(tileSize * 5, tileSize)),
+      // TODO: temporarily populate with dummy data, eventually read this data from disk & net
+      BuildingFloor(BuildingFloors.FIRST),
+      BuildingFloor(BuildingFloors.SECOND),
+      BuildingFloor(BuildingFloors.THIRD),
+      BuildingFloor(BuildingFloors.FIRST),
+      BuildingFloor(BuildingFloors.FOURTH),
+      BuildingFloor(BuildingFloors.FIRST),
+      BuildingFloor(BuildingFloors.SECOND),
+      BuildingFloor(BuildingFloors.THIRD),
+      BuildingFloor(BuildingFloors.FIRST),
+      BuildingFloor(BuildingFloors.FOURTH),
+      BuildingFloor(BuildingFloors.FIRST),
+      BuildingFloor(BuildingFloors.SECOND),
+      BuildingFloor(BuildingFloors.THIRD),
+      BuildingFloor(BuildingFloors.FIRST),
+      BuildingFloor(BuildingFloors.FOURTH),
+      BuildingFloor(BuildingFloors.CONSTRUCTION),
+      BuildingFloor(BuildingFloors.TMP_SPACER_FLOOR),
     ]);
 
     // get gridData
@@ -39,27 +46,27 @@ class GamePage2 extends StatelessWidget {
       itemCount: buildingFloors.length,
       itemBuilder: (BuildContext context, int index) {
         BuildingFloor floor = buildingFloors[index];
+        floor.floorNum = index;
+
         return Align(
           alignment: Alignment.center,
           child: Padding(
             padding: EdgeInsets.fromLTRB(tileSize, 0.0, tileSize, 0.0),
-            // child: BuildingFloorWidget(floor, index, context),
             child: Card(
+              elevation: 0,
+              color: Color.fromARGB(0, 0, 0, 0),
               child: Container(
                 width: tileSize * 7,
                 height: tileSize * 1.75,
-                child: BuildingFloorWidget(floor, index, tileSize, context),
+                child: BuildingFloorWidget(
+                  floor,
+                  index,
+                  tileSize,
+                  floor.floorType,
+                ),
               ),
               margin: EdgeInsets.zero,
             ),
-            // ListTile(
-            //   // title: Positioned.fill(
-            //   //   child: BuildingFloorWidget(floor, index, tileSize, context),
-            //   // ),
-            //   title: BuildingFloorWidget(floor, index, tileSize, context),
-            //   leading: null,
-            //   subtitle: null,
-            // ),
           ),
         );
       },
@@ -117,11 +124,6 @@ class GamePage2 extends StatelessWidget {
             children: <Widget>[
               Positioned.fill(
                 child: _buildGameView(context, tileSize),
-                // child: GestureDetector(
-                //   behavior: HitTestBehavior.opaque,
-                //   onTapDown: game.onTapDown,
-                //   child: _buildGameView(context, tileSize),
-                // ),
               ),
             ],
           ),
