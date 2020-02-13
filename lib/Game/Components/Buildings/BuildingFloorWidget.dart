@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flame/animation.dart' as animation;
 import 'package:flame/sprite.dart';
@@ -9,32 +10,45 @@ import 'package:flutter/material.dart';
 import 'package:towergame/Game/Components/Buildings/BuildingFloor.dart';
 import 'package:towergame/Game/Components/Buildings/BuildingFloors.dart';
 
-double _tileSize;
+class BuildingFloorWidget extends StatefulWidget {
+  final BuildingFloor floor;
+  final BuildingFloors floorType;
+  final double tileSize;
+  final int level;
 
-class BuildingFloorWidget extends StatelessWidget {
-  BuildingFloorWidget(
-    BuildingFloor floor,
-    int level,
-    double tileSize,
-    BuildContext context,
-  ) {
-    initialize(floor, level, tileSize);
-  }
-
-  initialize(BuildingFloor floor, int level, double tileSize) async {
-    // do some stuff here
-    _tileSize = tileSize;
-  }
+  const BuildingFloorWidget(
+      this.floor, this.level, this.tileSize, this.floorType,
+      {Key key})
+      : super(key: key);
 
   @override
+  _BuildingFloorWidget createState() {
+    return _BuildingFloorWidget();
+  }
+}
+
+class _BuildingFloorWidget extends State<BuildingFloorWidget> {
+  @override
   Widget build(BuildContext context) {
-    return Flame.util.animationAsWidget(
-      Position(_tileSize * 7, _tileSize * 1.75),
-      animation.Animation.sequenced(
-        'buildings/someroom_bg_anim.png',
-        4,
-        textureWidth: 128.0,
-      ),
+    Map<String, dynamic> floorInfo = floorEnumToString(widget.floorType);
+
+    return Stack(
+      children: <Widget>[
+        GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTapDown: widget.floor.onTapDown,
+            child: null),
+        Flame.util.animationAsWidget(
+          Position(widget.tileSize * 7, widget.tileSize * 1.75),
+          animation.Animation.sequenced(
+            floorInfo["path"],
+            floorInfo["frames"],
+            textureWidth: 128.0,
+            stepTime: Random().nextDouble() + 0.1,
+          ),
+        ),
+        Text("floor #" + widget.level.toString()),
+      ],
     );
   }
 }

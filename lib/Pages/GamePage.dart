@@ -9,7 +9,8 @@ class GamePage extends StatelessWidget {
   GamePage({Key key, this.game}) : super(key: key);
 
   Widget _buildTopBarWidget(int index, double tileSize, BuildContext context) {
-    return TopBarWidgets.build(index, tileSize, context);
+    Color topBarBgColor = Color.fromARGB(255, 150, 150, 150);
+    return TopBarWidgets.build(index, tileSize, topBarBgColor, context);
   }
 
   Widget _buildPageView() {
