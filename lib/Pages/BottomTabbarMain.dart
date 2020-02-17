@@ -38,9 +38,7 @@ class _BottomTabbarMainState extends State<BottomTabbarMain>
             Container(
               alignment: Alignment.center,
               color: Colors.grey,
-              child: GamePage(
-                game: _game,
-              ),
+              child: Text("tmp"),
             ),
           ],
         ),
@@ -66,7 +64,7 @@ class _BottomTabbarMainState extends State<BottomTabbarMain>
             Container(
               alignment: Alignment.center,
               color: Colors.grey,
-              child: GamePage2(),
+              child: GamePage2(_game),
             ),
           ],
         ),

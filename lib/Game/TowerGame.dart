@@ -21,12 +21,12 @@ enum GameState { TUTORIAL, PAUSED, RUNNING, AD }
 class TowerGame extends BaseGame {
   GameState state;
   Object rawData;
-  DataObj data;
+  // DataObj data;
 
   // don't access _gridData, it's out of date once GridBuilding is created...
   // access through there.
-  GridData _gridData;
-  GridBuilding gridBuilding;
+  // GridData _gridData;
+  // GridBuilding gridBuilding;
 
   // UI Coverage in Rects - for determining tap event locations
   // The Object - and it's coverage as Rect
@@ -45,7 +45,7 @@ class TowerGame extends BaseGame {
     await Util().setOrientation(DeviceOrientation.portraitUp);
 
     // sets the initial size which we need
-    resize(await Flame.util.initialDimensions());
+    // resize(await Flame.util.initialDimensions());
 
     // load images
     await Flame.images.loadAll([
@@ -79,18 +79,18 @@ class TowerGame extends BaseGame {
       'buildings/tmp_spacer_room.png',
     ]);
 
-    // load the raw saved data
-    rawData = await SavedData.load();
+    // // load the raw saved data
+    // rawData = await SavedData.load();
 
-    // set the data property - an obj type which we can access the fields of a save
-    data = rawData as DataObj;
-    print("the id of this account is: " + data.id);
-    print("the optons.someNumber of this account are: " +
-        data.options.someNumber.toString());
-    print("the _gridData is: " + data.grid.toJson().toString());
+    // // set the data property - an obj type which we can access the fields of a save
+    // data = rawData as DataObj;
+    // print("the id of this account is: " + data.id);
+    // print("the optons.someNumber of this account are: " +
+    //     data.options.someNumber.toString());
+    // print("the _gridData is: " + data.grid.toJson().toString());
 
-    // create the grid from the local saved data
-    _gridData = data.grid.clone();
+    // // create the grid from the local saved data
+    // _gridData = data.grid.clone();
 
     // // Setup tap gesture capabilities
     // GestureHandler gestureHandler = GestureHandler(this);
@@ -100,10 +100,10 @@ class TowerGame extends BaseGame {
     // Util().addGestureRecognizer(tap);
 
     // data etc is done loading, now startup the game
-    _startup(showTutorial: data.showTutorial, state: GameState.RUNNING);
+    _startup(state: GameState.RUNNING);
   }
 
-  void _startup({showTutorial: bool, state: GameState}) {
+  void _startup({state: GameState}) {
     print("startup sequence begin");
     this.state = state;
 
@@ -111,22 +111,19 @@ class TowerGame extends BaseGame {
     print("enabling wakelock");
     Wakelock.enable();
 
-    // add the background
-    // add(Background(bg: Backgrounds.SPACE));
+    // // add the grid
+    // gridBuilding = GridBuilding(_gridData, screenSize);
+    // gridBuilding.createGrid();
+    // for (var struct2 in gridBuilding.roomStructs) {
+    //   // Rect position = Rect.fromLTWH(50, 50, 128, 50);
+    //   print("trying to add real struct" + struct2.toString());
+    //   add(struct2);
+    // }
 
-    // add the grid
-    gridBuilding = GridBuilding(_gridData, screenSize);
-    gridBuilding.createGrid();
-    for (var struct2 in gridBuilding.roomStructs) {
-      // Rect position = Rect.fromLTWH(50, 50, 128, 50);
-      print("trying to add real struct" + struct2.toString());
-      add(struct2);
-    }
-
-    for (var struct in gridBuilding.structs) {
-      print("trying to add hollow rectangular structure" + struct.toString());
-      add(struct);
-    }
+    // for (var struct in gridBuilding.structs) {
+    //   print("trying to add hollow rectangular structure" + struct.toString());
+    //   add(struct);
+    // }
   }
 
   void onTapUp(TapUpDetails d) {
@@ -152,9 +149,9 @@ class TowerGame extends BaseGame {
 
   @override
   void preAdd(Component c) {
-    // print("addibg a component c " + c.toString());
+    print("adding a component c " + c.toString());
     if (c is HasGameRef) {
-      // print("component c has game ref!, setting its ref to this.");
+      print("component c has game ref!, setting its ref to this.");
       (c as HasGameRef).gameRef = this;
     }
 

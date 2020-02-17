@@ -17,9 +17,12 @@ class BuildingFloorWidget extends StatefulWidget {
   final int level;
 
   const BuildingFloorWidget(
-      this.floor, this.level, this.tileSize, this.floorType,
-      {Key key})
-      : super(key: key);
+    this.floor,
+    this.level,
+    this.tileSize,
+    this.floorType, {
+    Key key,
+  }) : super(key: key);
 
   @override
   _BuildingFloorWidget createState() {
@@ -35,9 +38,10 @@ class _BuildingFloorWidget extends State<BuildingFloorWidget> {
     return Stack(
       children: <Widget>[
         GestureDetector(
-            behavior: HitTestBehavior.opaque,
-            onTapDown: widget.floor.onTapDown,
-            child: null),
+          behavior: HitTestBehavior.opaque,
+          onTapUp: widget.floor.onTapUp,
+          child: null,
+        ),
         Flame.util.animationAsWidget(
           Position(widget.tileSize * 7, widget.tileSize * 1.75),
           animation.Animation.sequenced(

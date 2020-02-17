@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flame/game.dart';
+import 'package:flame/position.dart';
 
 import 'package:towergame/Game/TowerGame.dart';
 import 'package:towergame/Game/TopBar/Widgets.dart';
@@ -10,7 +12,7 @@ class GamePage2 extends StatelessWidget {
   final TowerGame game;
   final List<BuildingFloor> buildingFloors = [];
 
-  GamePage2({Key key, this.game}) : super(key: key);
+  GamePage2(this.game, {Key key}) : super(key: key);
 
   Widget _buildTopBarWidget(int index, double tileSize, BuildContext context) {
     Color topBarBgColor = Color.fromARGB(255, 150, 150, 150);
@@ -21,32 +23,37 @@ class GamePage2 extends StatelessWidget {
     buildingFloors.clear();
     buildingFloors.addAll([
       // TODO: temporarily populate with dummy data, eventually read this data from disk & net
-      BuildingFloor(BuildingFloors.FIRST),
-      BuildingFloor(BuildingFloors.SECOND),
-      BuildingFloor(BuildingFloors.THIRD),
-      BuildingFloor(BuildingFloors.FIRST),
-      BuildingFloor(BuildingFloors.FOURTH),
-      BuildingFloor(BuildingFloors.FIRST),
-      BuildingFloor(BuildingFloors.SECOND),
-      BuildingFloor(BuildingFloors.THIRD),
-      BuildingFloor(BuildingFloors.FIRST),
-      BuildingFloor(BuildingFloors.FOURTH),
-      BuildingFloor(BuildingFloors.FIRST),
-      BuildingFloor(BuildingFloors.SECOND),
-      BuildingFloor(BuildingFloors.THIRD),
-      BuildingFloor(BuildingFloors.FIRST),
-      BuildingFloor(BuildingFloors.FOURTH),
-      BuildingFloor(BuildingFloors.CONSTRUCTION),
-      BuildingFloor(BuildingFloors.TMP_SPACER_FLOOR),
+      BuildingFloor(BuildingFloors.FIRST, context),
+      BuildingFloor(BuildingFloors.SECOND, context),
+      BuildingFloor(BuildingFloors.THIRD, context),
+      BuildingFloor(BuildingFloors.FIRST, context),
+      BuildingFloor(BuildingFloors.FOURTH, context),
+      BuildingFloor(BuildingFloors.FIRST, context),
+      BuildingFloor(BuildingFloors.SECOND, context),
+      BuildingFloor(BuildingFloors.THIRD, context),
+      BuildingFloor(BuildingFloors.FIRST, context),
+      BuildingFloor(BuildingFloors.FOURTH, context),
+      BuildingFloor(BuildingFloors.FIRST, context),
+      BuildingFloor(BuildingFloors.SECOND, context),
+      BuildingFloor(BuildingFloors.THIRD, context),
+      BuildingFloor(BuildingFloors.FIRST, context),
+      BuildingFloor(BuildingFloors.FOURTH, context),
+      BuildingFloor(BuildingFloors.CONSTRUCTION, context),
+      BuildingFloor(BuildingFloors.TMP_SPACER_FLOOR, context),
     ]);
 
     // get gridData
+    print("size of game should be " +
+        (tileSize * 1.75 * buildingFloors.length).toString());
 
     return ListView.builder(
+      reverse: true,
       itemCount: buildingFloors.length,
       itemBuilder: (BuildContext context, int index) {
-        BuildingFloor floor = buildingFloors[index];
-        floor.floorNum = index;
+        buildingFloors[index].floorNum = index;
+
+        // add the floor as a component to the game
+        game.add(buildingFloors[index]);
 
         return Align(
           alignment: Alignment.center,
@@ -55,22 +62,21 @@ class GamePage2 extends StatelessWidget {
             child: Card(
               elevation: 0,
               color: Color.fromARGB(0, 0, 0, 0),
+              margin: EdgeInsets.zero,
               child: Container(
                 width: tileSize * 7,
                 height: tileSize * 1.75,
                 child: BuildingFloorWidget(
-                  floor,
+                  buildingFloors[index],
                   index,
                   tileSize,
-                  floor.floorType,
+                  buildingFloors[index].floorType,
                 ),
               ),
-              margin: EdgeInsets.zero,
             ),
           ),
         );
       },
-      reverse: true,
     );
   }
 
@@ -119,11 +125,18 @@ class GamePage2 extends StatelessWidget {
               ),
             ),
           ),
-          body: Stack(
-            fit: StackFit.expand,
+          body: Column(
             children: <Widget>[
-              Positioned.fill(
-                child: _buildGameView(context, tileSize),
+              Expanded(
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    IgnorePointer(
+                      ignoring: false,
+                      child: _buildGameView(context, tileSize),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
