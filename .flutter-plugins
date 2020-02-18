@@ -1,5 +1,8 @@
 # This is a generated file; do not edit or check into version control.
 audioplayers=/usr/local/opt/flutter/.pub-cache/hosted/pub.dartlang.org/audioplayers-0.13.5/
+firebase_core=/usr/local/opt/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.4.4/
+firebase_core_web=/usr/local/opt/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-0.1.1+2/
+firebase_database=/usr/local/opt/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_database-3.1.1/
 flutter_rounded_progress_bar=/usr/local/opt/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_rounded_progress_bar-0.1.2/
 path_provider=/usr/local/opt/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-1.5.1/
 sensors=/usr/local/opt/flutter/.pub-cache/hosted/pub.dartlang.org/sensors-0.4.1+5/

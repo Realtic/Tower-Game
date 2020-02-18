@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flame/game.dart';
 import 'package:flame/position.dart';
 
+import 'package:towergame/Pages/ScrollSync/ScrollSync.dart';
 import 'package:towergame/Game/TowerGame.dart';
 import 'package:towergame/Game/TopBar/Widgets.dart';
 import 'package:towergame/Game/Components/Buildings/BuildingFloor.dart';
@@ -11,6 +12,9 @@ import 'package:towergame/Game/Components/Buildings/BuildingFloorWidget.dart';
 class GamePage2 extends StatelessWidget {
   final TowerGame game;
   final List<BuildingFloor> buildingFloors = [];
+
+  final CustomScrollController _controller1 = CustomScrollController();
+  final CustomScrollController _controller2 = CustomScrollController();
 
   GamePage2(this.game, {Key key}) : super(key: key);
 
@@ -47,6 +51,7 @@ class GamePage2 extends StatelessWidget {
         (tileSize * 1.75 * buildingFloors.length).toString());
 
     return ListView.builder(
+      controller: _controller1,
       reverse: true,
       itemCount: buildingFloors.length,
       itemBuilder: (BuildContext context, int index) {
@@ -83,6 +88,10 @@ class GamePage2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double tileSize = MediaQuery.of(context).size.width / 9;
+    _controller1.addListener(() => _controller2
+        .jumpToWithoutGoingIdleAndKeepingBallistic(_controller1.offset));
+    _controller2.addListener(() => _controller1
+        .jumpToWithoutGoingIdleAndKeepingBallistic(_controller2.offset));
 
     return Stack(
       fit: StackFit.expand,
@@ -134,6 +143,27 @@ class GamePage2 extends StatelessWidget {
                     IgnorePointer(
                       ignoring: false,
                       child: _buildGameView(context, tileSize),
+                    ),
+                    IgnorePointer(
+                      ignoring: true,
+                      child: ListView(
+                        controller: _controller2,
+                        reverse: true,
+                        shrinkWrap: true,
+                        padding: EdgeInsets.all(0.0),
+                        children: <Widget>[
+                          Card(
+                            elevation: 0,
+                            margin: EdgeInsets.zero,
+                            color: Color.fromRGBO(0, 0, 0, 0.0),
+                            child: EmbeddedGameWidget(
+                              game,
+                              size: Position(tileSize * 9 - 150,
+                                  tileSize * 1.75 * buildingFloors.length),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),

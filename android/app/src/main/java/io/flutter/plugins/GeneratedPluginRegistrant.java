@@ -2,6 +2,8 @@ package io.flutter.plugins;
 
 import io.flutter.plugin.common.PluginRegistry;
 import xyz.luan.audioplayers.AudioplayersPlugin;
+import io.flutter.plugins.firebase.core.FirebaseCorePlugin;
+import io.flutter.plugins.firebase.database.FirebaseDatabasePlugin;
 import com.benzneststudios.flutter_rounded_progress_bar.FlutterRoundedProgressBarPlugin;
 import io.flutter.plugins.pathprovider.PathProviderPlugin;
 import io.flutter.plugins.sensors.SensorsPlugin;
@@ -17,6 +19,8 @@ public final class GeneratedPluginRegistrant {
       return;
     }
     AudioplayersPlugin.registerWith(registry.registrarFor("xyz.luan.audioplayers.AudioplayersPlugin"));
+    FirebaseCorePlugin.registerWith(registry.registrarFor("io.flutter.plugins.firebase.core.FirebaseCorePlugin"));
+    FirebaseDatabasePlugin.registerWith(registry.registrarFor("io.flutter.plugins.firebase.database.FirebaseDatabasePlugin"));
     FlutterRoundedProgressBarPlugin.registerWith(registry.registrarFor("com.benzneststudios.flutter_rounded_progress_bar.FlutterRoundedProgressBarPlugin"));
     PathProviderPlugin.registerWith(registry.registrarFor("io.flutter.plugins.pathprovider.PathProviderPlugin"));
     SensorsPlugin.registerWith(registry.registrarFor("io.flutter.plugins.sensors.SensorsPlugin"));

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "11043315046",
+    "firebase_url": "https://tower-game-20105.firebaseio.com",
+    "project_id": "tower-game-20105",
+    "storage_bucket": "tower-game-20105.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:11043315046:android:bb72e5d8bb03a043427ca7",
+        "android_client_info": {
+          "package_name": "com.softeserve.towergame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "11043315046-1k6k6cqutrjgf4ab5658g48ogu2gbqug.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8SZy0S1Sq_ueXKpjr1L1w3V8BttwPTO4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "11043315046-1k6k6cqutrjgf4ab5658g48ogu2gbqug.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
