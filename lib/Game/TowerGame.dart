@@ -5,6 +5,7 @@ import 'package:flame/game.dart';
 import 'package:flame/util.dart';
 import 'package:flame/position.dart';
 import 'package:flame/components/component.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/gestures.dart';
 import 'package:wakelock/wakelock.dart';
@@ -126,22 +127,12 @@ class TowerGame extends BaseGame {
     // }
   }
 
+  // void scrollingListener(ScrollController controller) {
+
+  // }
+
   void onTapUp(TapUpDetails d) {
     print("tapped on " + d.localPosition.toString());
-  }
-
-  bool handlingClick() {
-    return state == GameState.RUNNING || state == GameState.TUTORIAL;
-  }
-
-  void startInput(Position p, int dt) {
-    if (state == GameState.TUTORIAL || state == GameState.PAUSED) {
-      return;
-    }
-
-    if (p != null) {
-      // reset some things we might need
-    }
   }
 
   @override
