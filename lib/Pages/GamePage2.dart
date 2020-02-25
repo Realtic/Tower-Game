@@ -9,13 +9,23 @@ import 'package:towergame/Game/Components/Buildings/BuildingFloor.dart';
 import 'package:towergame/Game/Components/Buildings/BuildingFloors.dart';
 import 'package:towergame/Game/Components/Buildings/BuildingFloorWidget.dart';
 
-class GamePage2 extends StatelessWidget {
+class GamePage2 extends StatefulWidget {
   final TowerGame game;
+
+  const GamePage2(
+    this.game, {
+    Key key,
+  }) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() => _GamePage2State();
+}
+
+class _GamePage2State extends State<GamePage2>
+    with AutomaticKeepAliveClientMixin<GamePage2> {
   final List<BuildingFloor> buildingFloors = [];
   final CustomScrollController _controller1 = CustomScrollController();
   final CustomScrollController _controller2 = CustomScrollController();
-
-  GamePage2(this.game, {Key key}) : super(key: key);
 
   Widget _buildTopBarWidget(int index, double tileSize, BuildContext context) {
     Color topBarBgColor = Color.fromARGB(255, 150, 150, 150);
@@ -58,7 +68,7 @@ class GamePage2 extends StatelessWidget {
         buildingFloors[index].floorNum = index;
 
         // add the floor as a component to the game
-        game.add(buildingFloors[index]);
+        widget.game.add(buildingFloors[index]);
 
         return Align(
           alignment: Alignment.center,
@@ -157,7 +167,7 @@ class GamePage2 extends StatelessWidget {
                             margin: EdgeInsets.zero,
                             color: Color.fromRGBO(0, 0, 0, 0.0),
                             child: EmbeddedGameWidget(
-                              game,
+                              widget.game,
                               size: Position(tileSize * 9 - 150,
                                   tileSize * 1.75 * buildingFloors.length),
                             ),
@@ -174,4 +184,7 @@ class GamePage2 extends StatelessWidget {
       ],
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

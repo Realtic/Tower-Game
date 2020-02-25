@@ -14,22 +14,22 @@ class BottomTabbarMain extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _BottomTabbarMainState(game);
+  State<StatefulWidget> createState() => _BottomTabbarMainState();
 }
 
 class _BottomTabbarMainState extends State<BottomTabbarMain>
     with SingleTickerProviderStateMixin {
-  final TowerGame _game;
   TabController _tabController;
 
-  _BottomTabbarMainState(this._game) {
-    _initTabPages();
-  }
+  int _selectedPage = 2;
+  ItemPage _itemPage;
 
   List<Widget> _kTabPages = <Widget>[];
 
-  void _initTabPages() {
-    _kTabPages.addAll([
+  List<Widget> _initTabPages() {
+    print("init tab pages where page is " + _itemPage.initialPage.toString());
+    _kTabPages.removeRange(0, _kTabPages.length);
+    return [
       Center(
         child: Stack(
           alignment: Alignment.center,
@@ -51,7 +51,7 @@ class _BottomTabbarMainState extends State<BottomTabbarMain>
             Container(
               alignment: Alignment.center,
               color: Colors.grey,
-              child: ItemPage(),
+              child: _itemPage,
             ),
           ],
         ),
@@ -64,7 +64,7 @@ class _BottomTabbarMainState extends State<BottomTabbarMain>
             Container(
               alignment: Alignment.center,
               color: Colors.grey,
-              child: GamePage2(_game),
+              child: GamePage2(widget.game), //widget.game
             ),
           ],
         ),
@@ -95,7 +95,7 @@ class _BottomTabbarMainState extends State<BottomTabbarMain>
           ],
         ),
       ),
-    ]);
+    ];
   }
 
   static const _kTabs = <Tab>[
@@ -148,9 +148,13 @@ class _BottomTabbarMainState extends State<BottomTabbarMain>
   void initState() {
     super.initState();
     _tabController = TabController(
-      length: _kTabPages.length,
+      length: 5,
       vsync: this,
+      initialIndex: 2,
     );
+
+    _itemPage = ItemPage(0);
+    _kTabPages = _initTabPages();
   }
 
   @override
@@ -158,6 +162,13 @@ class _BottomTabbarMainState extends State<BottomTabbarMain>
     _tabController.dispose();
     super.dispose();
   }
+
+  // void changePageOn() {
+  //   setState(() {
+  //     _itemPage = ItemPage(1);
+  //     _kTabPages = _initTabPages();
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -172,6 +183,14 @@ class _BottomTabbarMainState extends State<BottomTabbarMain>
         child: TabBar(
           tabs: _kTabs,
           controller: _tabController,
+          onTap: (int clickedPageTab) {
+            if (_selectedPage == clickedPageTab) {
+              print("clicked on tab that ur already on!");
+              // changePageOn();
+            }
+
+            _selectedPage = clickedPageTab;
+          },
         ),
       ),
     );
