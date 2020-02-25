@@ -12,7 +12,6 @@ import 'package:towergame/Game/Components/Buildings/BuildingFloorWidget.dart';
 class GamePage2 extends StatelessWidget {
   final TowerGame game;
   final List<BuildingFloor> buildingFloors = [];
-
   final CustomScrollController _controller1 = CustomScrollController();
   final CustomScrollController _controller2 = CustomScrollController();
 
@@ -25,8 +24,9 @@ class GamePage2 extends StatelessWidget {
 
   Widget _buildGameView(BuildContext context, double tileSize) {
     buildingFloors.clear();
+
+    // TODO: temporarily populate with dummy data, eventually read this data from disk & net
     buildingFloors.addAll([
-      // TODO: temporarily populate with dummy data, eventually read this data from disk & net
       BuildingFloor(BuildingFloors.FIRST, context),
       BuildingFloor(BuildingFloors.SECOND, context),
       BuildingFloor(BuildingFloors.THIRD, context),
