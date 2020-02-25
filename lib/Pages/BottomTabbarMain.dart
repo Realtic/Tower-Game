@@ -26,7 +26,7 @@ class _BottomTabbarMainState extends State<BottomTabbarMain>
     _initTabPages();
   }
 
-  var _kTabPages = <Widget>[];
+  List<Widget> _kTabPages = <Widget>[];
 
   void _initTabPages() {
     _kTabPages.addAll([
