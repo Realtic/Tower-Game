@@ -5,7 +5,13 @@ import 'package:towergame/Pages/Item/ItemPages/ItemPage.dart'
 import 'package:towergame/Pages/Item/ItemStore.dart';
 
 class ItemPage extends StatelessWidget {
-  const ItemPage({Key key}) : super(key: key);
+  final int initialPage;
+
+  ItemPage(this.initialPage, {Key key}) : super(key: key);
+
+  // void switchToTab(int tabNum) {
+  //   bodyTabBarView.controller.animateTo(tabNum);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +48,13 @@ class ItemPage extends StatelessWidget {
       ),
     ];
 
+    // bodyTabBarView.children.removeRange(0, bodyTabBarView.children.length);
+    // bodyTabBarView.children.addAll(_kTabPages);
+
+    // TabController _tabController = null;
+
     return DefaultTabController(
+      initialIndex: initialPage,
       length: _kTabs.length,
       child: Scaffold(
         appBar: AppBar(
@@ -50,10 +62,13 @@ class ItemPage extends StatelessWidget {
           backgroundColor: Colors.blue[900],
           bottom: TabBar(
             tabs: _kTabs,
+            // controller: _tabController,
           ),
         ),
         body: TabBarView(
+          physics: NeverScrollableScrollPhysics(),
           children: _kTabPages,
+          // controller: _tabController,
         ),
       ),
     );
